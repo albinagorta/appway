@@ -1,0 +1,123 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Actualizar Producto</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <a href="#" routerLink="/productos" class="btn btn-danger back"><i class='fas fa-arrow-circle-left'></i>
+                &nbsp;Cancelar</a>
+            </div>
+          </div>
+        </div>
+        <form #dataForm="ngForm">
+          <div class="table-content">
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="nombre" class="p-t-b-10">Nombre<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="nombre" required maxlength="255"
+                  [(ngModel)]="editDataForm.nombre" name="nombre" #nombre="ngModel">
+                <div *ngIf="nombre.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!nombre?.errors?.['required']">
+                    El Nombre es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="categoria" class="p-t-b-10">Categoria<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                  <select class="form-control" required [(ngModel)]="editDataForm.id_categoria" name="id_categoria" #id_categoria="ngModel">
+                    <option value="" selected="true"> -- seleccionar -- </option>
+                      <option *ngFor="let cat of CategoriaList" 
+                            [value]="cat.id">
+                          {{cat.nombre}}
+                        </option>
+                  </select>
+                <div *ngIf="id_categoria.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!id_categoria?.errors?.['required']">
+                    La Categoria es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="stock" class="p-t-b-10">Stock<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" required maxlength="255"
+                  [(ngModel)]="editDataForm.stock" name="stock" #stock="ngModel">
+                <div *ngIf="stock.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!stock?.errors?.['required']">
+                    El Stock es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="precio" class="p-t-b-10">Precio<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                <input type="number" step="00.01" class="form-control" required maxlength="255"
+                  [(ngModel)]="editDataForm.precio" name="precio" #precio="ngModel">
+                <div *ngIf="precio.errors && isSubmitted" class="alert alert-danger validationError">
+                  <div [hidden]="!precio?.errors?.['required']">
+                    El Precio es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group p-10 row">
+              <div class="col-sm-3">
+                <label for="in_estado" class="p-t-b-10">Estado<span class="requiredStar">*</span></label>
+              </div>
+              <div class="col-sm-9">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="inlineRadio1"
+                          name="in_estado"
+                          [(ngModel)]="editDataForm.in_estado"
+                          value="1"
+                          (checked)="editDataForm.in_estado==1"
+                        />
+                        <label class="form-check-label" for="inlineRadio1">
+                          Activado
+                        </label>
+                      </div>
+                      <br>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="inlineRadio2"
+                          name="in_estado"
+                          [(ngModel)]="editDataForm.in_estado"
+                          value="0"
+                          (checked)="editDataForm.in_estado==0"
+                        />
+                        <label class="form-check-label" for="inlineRadio2">
+                          Desactivado
+                        </label>
+                      </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-footer">
+            <button class="btn btn-success" (click)="EditData(dataForm.form.valid)">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

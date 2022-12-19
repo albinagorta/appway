@@ -1,0 +1,23 @@
+<nav class="nav-bar">
+    <label for="toggle" class="nav-bar__label">Menu</label>
+    <input type="checkbox" id="toggle" class="nav-bar__toggle">
+    <ul class="nav-bar__list">
+        <li class="nav-bar__list-item">
+            <a routerLink="/categorias" class="nav-bar__link">Categorias</a>
+        </li>
+        <li class="nav-bar__list-item">
+            <a routerLink="/productos" class="nav-bar__link">Productos</a>
+        </li>
+        <li class="nav-bar__list-item">
+            <a routerLink="/clientes" class="nav-bar__link">Clientes</a>
+        </li>
+        <li class="nav-bar__list-item">
+            <a routerLink="/usuarios" class="nav-bar__link">Usuarios</a>
+        </li>
+        
+        <li class="nav-bar__list-item" style="float: right;background: red;">
+          <a (click)="logout()" class="nav-bar__link">Salir</a>
+      </li>
+
+    </ul>
+  </nav>

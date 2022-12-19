@@ -1,0 +1,42 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Mantenimiento de usuarios</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="nuevo()">
+                <i class='fas fa-plus-circle'></i><span> Nuevo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+            <tr class="center-align">
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo electrónico</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarioList" class="center-align">
+              <td>{{ usuario.nombres }}</td>
+              <td>{{ usuario.apellidos }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>
+                <a  [routerLink]="['/usuarios/edit/', usuario.id]" class="btn"><i class="fa fa-edit edit"></i></a>
+                <button type="button" (click)="deleteDataConfirmation(usuario)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td *ngIf="usuarioList.length == 0" colspan="6">No se encontró registros</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

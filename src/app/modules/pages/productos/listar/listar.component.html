@@ -1,0 +1,46 @@
+<div class="container-xl">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4><b>Mantenimiento de productos</b></h4>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-success" (click)="nuevo()">
+                <i class='fas fa-plus-circle'></i><span> Nuevo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered table-content">
+          <thead>
+            <tr class="center-align">
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Categoria</th>
+              <th>Stock</th>
+              <th>Precio</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of dataList" class="center-align">
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.categoria?.nombre}}</td>              
+              <td>{{ producto.stock }}</td>
+              <td>{{ producto.precio }}</td>
+              <td>
+                <a  [routerLink]="['/productos/edit/', producto.id]" class="btn"><i class="fa fa-edit edit"></i></a>
+                <button type="button" (click)="deleteDataConfirmation(producto)" class="btn"><i class='fas fa-trash-alt delete'></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td *ngIf="dataList.length == 0" colspan="6">No se encontró registros</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
